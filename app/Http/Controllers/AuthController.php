@@ -28,13 +28,13 @@ class AuthController extends Controller
 
         session(['admin_id' => $user->id]);
 
-        return redirect('/students');
+        return redirect()->route('students.index')->with('success', 'Logged in successfully!');
     }
 
     public function logout()
     {
         session()->forget('admin_id');
-        return redirect('/login');
+
+        return redirect()->route('login')->with('success', 'Logged out successfully!');
     }
 }
-

@@ -38,6 +38,22 @@
 </head>
 <body>
 
+@if(session('success'))
+    <div id="message" style="margin-bottom: 15px; color: green;">
+        {{ session('success') }}
+    </div>
+
+    <script>
+
+        setTimeout(() => {
+            const messageDiv = document.getElementById('message');
+            if (messageDiv) {
+                messageDiv.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+@endif
+
 <div class="login-box">
     <h2>Admin Login</h2>
 
@@ -47,7 +63,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ url('/login') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <label>Email</label>
